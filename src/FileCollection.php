@@ -36,7 +36,7 @@ class FileCollection implements FileInterface
     public function __construct($fileName)
     {
         $this->fileName = $fileName;
-        $this->data[$fileName] = [];
+        $this->data[$fileName]['data'] = [];
     }
 
     /**

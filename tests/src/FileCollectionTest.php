@@ -35,6 +35,7 @@ class FileCollectionTest extends TestCase
     {
         $collection->set('retrieving file contents');
         $this->assertEquals('retrieving file contents', $collection->get());
+        $this->assertEquals('retrieving file contents', $collection->get('example.txt'));
     }
 
     /**
@@ -65,7 +66,7 @@ class FileCollectionTest extends TestCase
         $collection = new FileCollection('example.txt');
         $file = $collection->setNew('example2.txt', 'some content');
         $file = $collection->setNew('example3.txt', 'some content');
-        $file = $collection->setNew('example4.txt', 'some content');
+        $file = $collection->setNew('example4.txt', 'some content', '+10');
         $this->assertEquals(4, $collection->count());
     }
 
