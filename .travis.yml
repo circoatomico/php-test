@@ -7,7 +7,7 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
+    - php: 7.2.24
     - php: 7.3.27
 
 before-install:
@@ -22,7 +22,6 @@ script:
 
 env:
   - CODECOV_TOKEN='34527a91-d611-4fe7-8cb6-ec30a89a4978'
-  - XDEBUG_MODE=coverage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
