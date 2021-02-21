@@ -49,13 +49,8 @@ class FileCollection implements FileInterface
             return $this->data[$this->fileName]['data'];
         } elseif ($this->has($fileName)) {
             $this->fileName = $fileName;
-
-            if (!isset($this->data[$fileName])) {
-                $this->data[$fileName]['data'] = file_get_contents('files/'.$fileName);
-                return $this->data[$fileName]['data'];
-            } else {
-                return $this->data[$fileName]['data'];
-            }
+            $this->data[$fileName]['data'] = file_get_contents('files/'.$fileName);
+            return $this->data[$fileName]['data'];
         } else {
             return false;
         }
