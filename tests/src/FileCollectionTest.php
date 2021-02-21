@@ -35,8 +35,7 @@ class FileCollectionTest extends TestCase
     {
         $collection->set('retrieving file contents');
         $this->assertEquals('retrieving file contents', $collection->get());
-        $this->assertEquals('retrieving file contents', $collection->get('example.txt'));
-        $this->assertEquals('', $collection->get('newFile.txt'));
+        $this->assertEquals('some content', $collection->get('example2.txt'));
     }
 
     /**
@@ -134,8 +133,7 @@ class FileCollectionTest extends TestCase
         $this->assertFalse($collection->has('example.txt'));
     }
 
-    /**
-     * @test
+    /** 
      * @depends notExpiredItemCanBeAccessed
      */
     public function cleanAllFiles()

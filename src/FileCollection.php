@@ -76,7 +76,7 @@ class FileCollection implements FileInterface
 
         $this->data[$this->fileName]['expiration'] = $expiration;
         $this->data[$this->fileName]['data'] = $value;
-        $fo = fopen('files/'.$this->fileName, "a+");
+        $fo = fopen('files/'.$this->fileName, "w+");
         fwrite($fo, $value);
     }
 
@@ -96,7 +96,7 @@ class FileCollection implements FileInterface
 
         $this->data[$fileName]['expiration'] = $expiration;
         $this->data[$fileName]['data'] = $value;
-        $fo = fopen('files/'.$fileName, "a+");
+        $fo = fopen('files/'.$fileName, "w+");
         fwrite($fo, $value);
     }
 
@@ -111,7 +111,11 @@ class FileCollection implements FileInterface
         if (!$validation) {
             return false;
         }
-        
+
+        if (!isset($this->data[$fileName]['expiration'])) {
+            return true;
+        }
+
         if (strtotime("now") >= $this->data[$fileName]['expiration']) {
             unset($this->data[$fileName]);
             return false;
@@ -133,13 +137,6 @@ class FileCollection implements FileInterface
      */
     public function clean()
     {
-        $directories = scandir('files/');
-        unset($directories[0]);
-        unset($directories[1]);
-        foreach ($directories as $dir) {
-            unlink('files/'.$dir);
-        }
-
         $this->data = [];
     }
 }
