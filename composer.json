@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "composer/xdebug-handler": "^1.4"
+    },
     "require-dev": {
         "php": "^7.2",
         "phpunit/phpunit": "^8.1",
