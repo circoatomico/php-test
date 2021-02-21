@@ -133,7 +133,7 @@ class FileCollectionTest extends TestCase
         $this->assertFalse($collection->has('example.txt'));
     }
 
-    /** 
+    /**
      * @depends notExpiredItemCanBeAccessed
      */
     public function cleanAllFiles()
