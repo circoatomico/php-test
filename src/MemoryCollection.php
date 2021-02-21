@@ -33,31 +33,51 @@ class MemoryCollection implements CollectionInterface
             return $defaultValue;
         }
 
-        return $this->data[$index];
+        return $this->data[$index]['data'];
     }
 
     /**
      * {@inheritDoc}
      */
-    public function set(string $index, $value)
+    public function set(string $index, $value, $expiration = null)
     {
-        $this->data[$index] = $value;
+        $this->data[$index]['data'] = $value;
+
+        if ($expiration == null) {
+            $expiration = strtotime("now + 5 minutes");
+        } else {
+            $expiration = strtotime("now ".$expiration." minutes");
+        }
+
+        $this->data[$index]['expiration'] = $expiration;
     }
 
     /**
      * {@inheritDoc}
      */
     public function has(string $index)
-    {
-        return array_key_exists($index, $this->data);
+    {   
+        $validation = array_key_exists($index, $this->data);
+
+        if (!$validation) {
+            return false;
+        }
+        
+        if (strtotime("now") >= $this->data[$index]['expiration']) {
+            unset($this->data[$index]);
+            return false;
+        } else {
+            return true;
+        };
+        
     }
 
     /**
      * {@inheritDoc}
      */
     public function count(): int
-    {
-        return count($this->data) + 1;
+    { 
+        return count($this->data);
     }
 
     /**

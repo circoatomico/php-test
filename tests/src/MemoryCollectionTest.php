@@ -61,7 +61,7 @@ class MemoryCollectionTest extends TestCase
      */
     public function newCollectionShouldNotContainItems()
     {
-        $collection = new MemoryCollection();
+        $collection = new MemoryCollection(); 
         $this->assertEquals(0, $collection->count());
     }
 
@@ -75,7 +75,6 @@ class MemoryCollectionTest extends TestCase
         $collection->set('index1', 'value');
         $collection->set('index2', 5);
         $collection->set('index3', true);
-
         $this->assertEquals(3, $collection->count());
     }
 
@@ -103,5 +102,41 @@ class MemoryCollectionTest extends TestCase
         $collection->set('index', 'value');
 
         $this->assertTrue($collection->has('index'));
+    }
+
+    /**
+     * @test
+     * @depends dataCanBeAdded
+     */
+    public function addItemWithExpirationTime()
+    {
+        $collection = new MemoryCollection();
+        $collection->set('index', 'value', '+10');
+
+        $this->assertTrue($collection->has('index'));
+    }
+
+    /**
+     * @test
+     * @depends dataCanBeAdded
+     */
+    public function notExpiredItemCanBeAccessed()
+    {
+        $collection = new MemoryCollection();
+        $collection->set('index', 'value', '+10');
+
+        $this->assertTrue($collection->has('index'));
+    }
+
+    /**
+     * @test
+     * @depends notExpiredItemCanBeAccessed
+     */
+    public function expiredItemCanNotBeAccessed()
+    {
+        $collection = new MemoryCollection();
+        $collection->set('index', 'value', '-10');
+
+        $this->assertFalse($collection->has('index'));
     }
 }

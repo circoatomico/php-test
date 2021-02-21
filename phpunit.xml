@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Live eCommerce Test Suite">
+        <testsuite name="Live">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
