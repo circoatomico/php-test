@@ -1,6 +1,6 @@
 # Live eCommerce - Teste para PHP
 
-[![TravisCI][icon-travisci]][link-travisci]
+[![Build Status](https://travis-ci.com/circoatomico/php-test.svg?branch=master)](https://travis-ci.com/circoatomico/php-test)
 [![Code Coverage][icon-codecov]][link-codecov]
 
 Este repositório contém uma implementação básica de coleções. Coleções armazenam dados pelo esquema de chave-valor, onde um valor é representado por uma chave.
