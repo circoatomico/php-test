@@ -36,7 +36,7 @@ class FileCollection implements FileInterface
     public function __construct($fileName)
     {
         $this->fileName = $fileName;
-        $this->data[$fileName] = [];        
+        $this->data[$fileName] = [];
     }
 
     /**
@@ -48,7 +48,6 @@ class FileCollection implements FileInterface
         if ($fileName == null) {
             return $this->data[$this->fileName]['data'];
         } elseif ($this->has($fileName)) {
-
             $this->fileName = $fileName;
 
             if (!isset($this->data[$fileName])) {
@@ -57,11 +56,9 @@ class FileCollection implements FileInterface
             } else {
                 return $this->data[$fileName]['data'];
             }
-    
         } else {
             return false;
         }
-
     }
 
     /**
@@ -127,7 +124,7 @@ class FileCollection implements FileInterface
      * {@inheritDoc}
      */
     public function count(): int
-    { 
+    {
         return count($this->data);
     }
 

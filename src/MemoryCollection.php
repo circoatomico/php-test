@@ -56,7 +56,7 @@ class MemoryCollection implements CollectionInterface
      * {@inheritDoc}
      */
     public function has(string $index)
-    {   
+    {
         $validation = array_key_exists($index, $this->data);
 
         if (!$validation) {
@@ -68,15 +68,14 @@ class MemoryCollection implements CollectionInterface
             return false;
         } else {
             return true;
-        };
-        
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     public function count(): int
-    { 
+    {
         return count($this->data);
     }
 

@@ -32,8 +32,8 @@ class FileCollectionTest extends TestCase
      * @depends dataCanBeAdded
      */
     public function dataCanBeRetrieved($collection)
-    { 
-        $collection->set('retrieving file contents'); 
+    {
+        $collection->set('retrieving file contents');
         $this->assertEquals('retrieving file contents', $collection->get());
     }
 
@@ -52,7 +52,7 @@ class FileCollectionTest extends TestCase
      */
     public function newCollectionShouldContainOnlyAItem()
     {
-        $collection = new FileCollection('undefined.txt'); 
+        $collection = new FileCollection('undefined.txt');
         $this->assertEquals(1, $collection->count());
     }
 
@@ -131,5 +131,4 @@ class FileCollectionTest extends TestCase
 
         $this->assertFalse($collection->has('example.txt'));
     }
-
 }

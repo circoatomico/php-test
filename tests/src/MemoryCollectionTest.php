@@ -61,7 +61,7 @@ class MemoryCollectionTest extends TestCase
      */
     public function newCollectionShouldNotContainItems()
     {
-        $collection = new MemoryCollection(); 
+        $collection = new MemoryCollection();
         $this->assertEquals(0, $collection->count());
     }
 
