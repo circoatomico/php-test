@@ -20,6 +20,9 @@ script:
   - composer check
   - composer test
 
+env:
+  - CODECOV_TOKEN='34527a91-d611-4fe7-8cb6-ec30a89a4978'
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
