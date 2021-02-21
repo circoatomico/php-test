@@ -131,4 +131,17 @@ class FileCollectionTest extends TestCase
 
         $this->assertFalse($collection->has('example.txt'));
     }
+
+    /**
+     * @test
+     * @depends notExpiredItemCanBeAccessed
+     */
+    public function cleanAllFiles()
+    {
+        $collection = new FileCollection('example.txt');
+        $collection->set('some nice content', '+10');
+        $collection->clean();
+
+        $this->assertEquals(0, $collection->count());
+    }
 }
